@@ -4,22 +4,44 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Menu {
-    private ArrayList updated;
-    private ArrayList menuItems;
-    private ArrayList newMenuItems;
 
-    public Menu(ArrayList updated, ArrayList menuItems, ArrayList newMenuItems) {
-        this.updated = updated;
+    private String restaurantName;
+    private ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
+
+    public Menu(String restaurantName, ArrayList<MenuItem> menuItems) {
+        this.restaurantName = restaurantName;
         this.menuItems = menuItems;
-        this.newMenuItems = newMenuItems;
     }
 
-    public void setUpdated(ArrayList updated) {this.updated=updated;}
-    public void setMenuItems(ArrayList menuItems) {this.menuItems=menuItems;}
-    public void setNewMenuItems(ArrayList newMenuItems) {this.newMenuItems=newMenuItems;}
+    public void setRestaurantName (String restaurantName) {this.restaurantName=restaurantName;}
+    public void setMenuItems(ArrayList<MenuItem> menuItems) {this.menuItems=menuItems;}
 
-    public ArrayList getupdated() { return updated; }
-    public ArrayList getmenuItems() { return menuItems; }
-    public ArrayList getNewMenuItems() { return newMenuItems; }
+    public String getRestaurantName() { return restaurantName; }
+    public ArrayList<MenuItem> getMenuItems() { return menuItems; }
 
+    public void addMenuItem(MenuItem menuItem) {
+        if (!menuItems.contains(menuItem)) {menuItems.add(menuItem);}
+    }
+    public void removeMenuItem(String menuItemName) {
+        for (MenuItem item : menuItems) {
+            if (item.getName().equals(menuItemName)) {
+                menuItems.remove(item);
+            }
+        }
+    }
+    @Override
+    public String toString() {
+        Date day = new Date(2023,01,24);
+        String allItems = "";
+
+        for (MenuItem item : menuItems) {
+            allItems += "\n\n\t\t\t" + item.isNew(day) + "\n\tName: " + item.getName() +
+                    "\n\tDescription: " + item.getDescription() +
+                    "\n\tCategory: " + item.getCategory() +
+                    "\n\tPrice: " + item.getPrice();
+        }
+        return "Menu\n\n" +
+                "Restaurant Name: " + restaurantName +
+                "\n\nFood: " + allItems;
+    }
 }

@@ -6,8 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="RestaurantMenu" />
+        <module name="Restaurant Menu" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="RestaurantMenu (Studio Chapter 4)" target="11" />
+      <module name="RestaurantMenuStudio4" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>
